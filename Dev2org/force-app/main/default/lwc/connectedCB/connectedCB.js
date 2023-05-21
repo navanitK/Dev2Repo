@@ -8,8 +8,7 @@ export default class connectedCB extends LightningElement {
     @api 
     set statusValue(inputFromParent){
         if(this._statusValue !== inputFromParent ){
-            this._statusValue = inputFromParent;
-            
+            this._statusValue = inputFromParent;            
             this.printString = this._statusValue;
         }
     }
