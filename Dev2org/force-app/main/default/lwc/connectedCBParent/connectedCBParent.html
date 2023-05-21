@@ -1,0 +1,16 @@
+<template>
+    <lightning-button variant="brand" 
+                    label="Set" 
+                    title="Save" 
+                    onclick={handleUpdate} 
+                    class="slds-m-right_xx-small">
+    </lightning-button>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <lightning-formatted-text value={printString}>
+        </lightning-formatted-text>
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input id="inputString" type="text" label="Enter some text" value={printString}></lightning-input>
+        </div>
+    </div>
+    <c-connected-c-b status-value={printString}></c-connected-c-b>
+</template>
