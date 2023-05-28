@@ -14,3 +14,4 @@ List<Database.saveResult> sr2 = EventBus.publish(new List<basicEvent__e> {
 // {
 //    "Data__c" : "-5"
 // }
+///services/data/v56.0/sobjects/basicEvent__e/eventSchema
