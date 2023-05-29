@@ -1,20 +1,27 @@
 import { LightningElement, api, wire, track} from 'lwc';
+import { getRecord ,getFieldValue} from 'lightning/uiRecordApi';
+import REVENUE_FIELD from '@salesforce/schema/Account.Name';
 
-export default class connectedCB extends LightningElement {
+const fields = [REVENUE_FIELD];
+
+export default class wireChecks extends LightningElement {
     //@api statusValue;
     printString;
     _statusValue;
+    _userInput;
 
-    @api 
-    set statusValue(inputFromParent){
-        if(this._statusValue !== inputFromParent ){
-            this._statusValue = inputFromParent;            
-            this.printString = this._statusValue;
-        }
+    @wire (getRecord, { 
+        recordId : '$_userInput', 
+        fields
+    })
+    account;
+
+    get revenue() {
+        return getFieldValue(this.account.data, REVENUE_FIELD);
     }
 
-    get statusValue(){
-        this._statusValue;
+    get merror() {
+        console.log( JSON.stringify(getFieldValue(this.account.error)));
     }
 
     connectedCallback(){
@@ -28,6 +35,6 @@ export default class connectedCB extends LightningElement {
     handleUpdate(){
         console.log('handleUpdate');
         var inp  = this.template.querySelector("lightning-input");
-        this.printString= inp.value;
+        this._userInput = inp.value;
     }
 }

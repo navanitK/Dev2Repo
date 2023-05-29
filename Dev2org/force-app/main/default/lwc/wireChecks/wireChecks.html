@@ -1,0 +1,20 @@
+<template>
+    <h1> Wire Checks </h1>
+    <lightning-button variant="brand" 
+                    label="Set" 
+                    title="Save" 
+                    onclick={handleUpdate} 
+                    class="slds-m-right_xx-small">
+    </lightning-button>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        
+        <lightning-formatted-text value={revenue}>
+        </lightning-formatted-text>
+        <lightning-formatted-text value={merror}>
+        </lightning-formatted-text>
+
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-input id="inputString" type="text" label="Enter some text" value="ACME Inc."></lightning-input>
+        </div>
+    </div>
+</template>
