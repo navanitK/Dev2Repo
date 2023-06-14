@@ -17,11 +17,19 @@ export default class wireChecks extends LightningElement {
     account;
 
     get revenue() {
+        console.log( '****uhuh' + JSON.stringify(getFieldValue(this.account.error)));
+        
         return getFieldValue(this.account.data, REVENUE_FIELD);
+        
     }
 
     get merror() {
         console.log( JSON.stringify(getFieldValue(this.account.error)));
+        var today = new Date();
+        //var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        return time;
     }
 
     connectedCallback(){

@@ -17,12 +17,25 @@ export default class connectedCB extends LightningElement {
         this._statusValue;
     }
 
+    constructor(){
+        super();
+        console.log('### Child Constructor');
+    }
+
     connectedCallback(){
-        console.log('connected CB');
+        console.log('### Child connected CB');
         //only executes once when chil instantiates. 
         //if the attrribute value changes in the Parent the connected callback does not get called again.
         //so for computation against passed in field, use getter and setter
         //this.printString = this.statusValue;
+    }
+
+    renderedCallback(){
+        console.log('### Child rendered Call back');
+    }
+
+    disconnectedCallback(){
+        console.log('### Child disconnectedCallback');
     }
 
     handleUpdate(){
