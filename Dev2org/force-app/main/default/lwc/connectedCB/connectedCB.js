@@ -11,6 +11,7 @@ export default class connectedCB extends LightningElement {
             this._statusValue = inputFromParent;            
             this.printString = this._statusValue;
         }
+
     }
 
     get statusValue(){
@@ -28,10 +29,13 @@ export default class connectedCB extends LightningElement {
         //if the attrribute value changes in the Parent the connected callback does not get called again.
         //so for computation against passed in field, use getter and setter
         //this.printString = this.statusValue;
+        
+        //onChange="callme"
     }
 
     renderedCallback(){
         console.log('### Child rendered Call back');
+        template.querylocator('button').assEventListener(Submit); 
     }
 
     disconnectedCallback(){
@@ -43,4 +47,14 @@ export default class connectedCB extends LightningElement {
         var inp  = this.template.querySelector("lightning-input");
         this.printString= inp.value;
     }
+
+     //event handler   
+    callMe(event){
+
+    }
+
+    Submit(event){
+
+    }
 }
+
