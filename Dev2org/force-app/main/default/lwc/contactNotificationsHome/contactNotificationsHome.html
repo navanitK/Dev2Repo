@@ -1,0 +1,38 @@
+<template>
+  <lightning-card
+    title="Customer Contact Notifications"
+    icon-name="standard:task"
+  >
+    <div class="slds-var-p-horizontal_medium">
+      <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+      </template>
+
+      <template if:false={isLoading}>
+        <template if:true={errorMessage}>
+          <lightning-alert variant="error" title="Error">
+            {errorMessage}
+          </lightning-alert>
+        </template>
+
+        <template if:false={errorMessage}>
+          <template if:true={tasks.length}>
+            <lightning-datatable
+              key-field="Id"
+              data={tasks}
+              columns={columns}
+              onrowaction={handleRowAction}
+            >
+            </lightning-datatable>
+          </template>
+
+          <template if:false={tasks.length}>
+            <div class="slds-align_absolute-center slds-var-p-vertical_large">
+              <p>No customer contact notifications at this time</p>
+            </div>
+          </template>
+        </template>
+      </template>
+    </div>
+  </lightning-card>
+</template>
